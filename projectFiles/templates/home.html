@@ -1,0 +1,41 @@
+{%extends "layout.html"%}
+{%block title%}{{titel}}{%endblock%}
+{%block main%}
+<div class="container mt-4">
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if message %}
+            {% for category, message in message %}
+                <div class="alert alert-{{ category }}"  id="aleart">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-md-12">
+           <div class="container">
+                <a name="" id="bt1" class="btn btn-primary btn-block btn-lg" href="{{url_for('loginLogout.register')}}" role="button">سجل جوا الجك</a>
+                <section class="co2 shadow " id="co2">
+                    <h4 id="h2">كل سنة و انتوا طيبين</h4>
+                    <div class="wrap">
+                        <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>و الله كويس بتقرا الكلام دا! هم اثنين يا انت فاضي و بالك طويل او اهبل ساي و في كل الحالات انت زولنا و بنرحب بك في تطبيق اكشحها السوداني و هو تجسيد لمفهوم تطبيق صراحة لكن زي ما قال البرهان باللغة الراندوك العظيمة دا تطبيق لراسطات و الكنداكات</p>
+                        <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>اول حاجة تعملها اعمل حساب من قائمة الخيارات و عارفنك ما عارفتها وين...... فعملنا اشان عيونك السمحه زر كبير في اول الشاشة اضغطوا و سجل، و بالله سجل بيانات كويسة ما دايرين نشاغلك صدقني يا انت شناتك ما بتتقابل </p>
+                        <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>شارك الرابط حسابك في كل حتة و خاصة خاصة الواتس و الفيس ما معروف يا ود الحلال احتمال في زول اعبرك و تطلع من خانة السناقل او زول اكشح ليك مديدة حارة....... كلو وارد في النهاية نحن ناس فتنة و فتة </p>
+                        <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>الزمن دا الناس ما بترحم و اي زول بدي في المليان ف اعتبر دا تطوير لنفسك و استقبل الطعمجة بصدر واسع ....... و بالله لو اكلت معاك جنبة ما تعملها حالة و تقعد تقول انا و انا <span id="dots"> .....</span></p>
+                        <span id="more">
+                            <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>استهدف كلاب السرة و بتاعين الفراشات و اب جيقات و الفيمنيست و ناس الفلسفة و قوم بانقا......... يااخ اقول لك اي حاجة بتمشي اتنمر فيها طوالي</p>
+                            <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>التطبيق صناعة سودانية 80%........... اي الفكرة ما حقتنا و كم حاجة من قوقل و حقوق ملكية وراء و قدام.........  الحمد لله بس</p>
+                            <p><i class="fa fa-angle-double-left" aria-hidden="true" id="arrow"></i>اذا حبيت شغلنا و عندك فكرة في راسك المربع دا و دي حاجة نشك فيها ......اتواصل معانا و باذن الله بنساعدك او سرقناها منك المهم بنتواصل معاك</p>
+                        </span>
+                    </div>
+                </section>    
+                <div class="wrap2">
+                    <button type="button" name="" id="bt3" class="btn btn-primary" onclick="more()">كشف اكثر</button>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

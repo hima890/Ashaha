@@ -1,0 +1,35 @@
+<nav>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="co1">
+                <div class="menuLogo" onclick="show1(this)" id="logo">
+                    <div class="m"></div>
+                    <div class="m"></div>
+                    <div class="m"></div>
+                </div>
+                <div class="menu" id="menu">
+                    <ul>
+                        <i class="fa fa-times" aria-hidden="true" id="close" onclick="close1()"></i>
+                        <li><a href="{{url_for('home.index')}}">الرئيسية</a></li>
+                        {% if current_user.is_authenticated %}
+                            <li><a href="{{url_for('account.account')}}">الحساب</a></li>
+                            <li><a href="{{url_for('loginLogout.logout')}}">تسجيل الخروج</a></li>
+                            <li><a href="{{url_for('account.contact')}}">تواصل معنا</a></li>
+                            <li><a href="https://covid19sd.herokuapp.com">Covid-19</a></li>
+                        
+                        {%else%}
+                            <li><a href="{{url_for('loginLogout.register')}}">سجل جوا الجك</a></li>
+                            <li><a href="{{url_for('loginLogout.login')}}">تسجيل الدخول</a></li>
+                            <li><a href="{{url_for('account.contact')}}">تواصل معنا</a></li>
+                            <li><a href="https://covid19sd.herokuapp.com">Covid-19</a></li>
+                        {%endif%}
+                    </ul>
+                </div>
+                <div class="logo">
+                    <h3>Akshah</h3>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</nav>

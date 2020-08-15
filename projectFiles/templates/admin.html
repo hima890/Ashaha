@@ -1,0 +1,116 @@
+{%extends "layout.html"%}
+{%block title%}{{titel}}{%endblock%}
+{%block main%}
+<div class="container mt-4">
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if message %}
+            {% for category, message in message %}
+                <div class="alert alert-{{ category }}"  id="aleart">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-md-12">
+           <div class="container" style="text-align: center;">
+                <section class="char">
+                    <h2>احصائيات المستخدمين</h2>
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </section>
+                <section id="s1" class="shadow">
+                    <div class="user">
+                        <p>عدد المستخدمين</p>
+                        <span>{{users}}</span>
+                    </div>
+                    <div class="vister">
+                        <p>عدد الزوار</p>
+                        <span>{{vister}}</span>
+                    </div>
+                </section>
+                <section class="searsh">
+                    <form action="{{url_for('admin.searsh')}}" method="POST">
+                        <div class="form-group " style="text-align: center;">
+                            <input  type="search" class="form-control shadow" id="searsh" required name="searsh" autocomplete="searsh" placeholder="الاسم، الرقم">
+                            <button type="submit" class="btn btn-primary btn-lg" id="b1">بحث</button>
+                        </div>
+                    </form>
+                </section>
+                <section>
+                    <div class="topMessage">
+                        <h4>رسائل للادمن</h4>
+                        {%if adminPost%}
+                            {%for post in adminPost%}
+                            <div class="container">
+                                <section>
+                                    <div class="co6 shadow">
+                                        <img class="rounded-circle shadow" src="{{url_for('static', filename='/pics/all/')}}{{post.proFimage}}.png">
+                                        <p id="heder4">مجهول</p>
+                                        <span>{{post.date_created.strftime('%Y-%b-%a')}}</span>
+                                        <hr>
+                                        <p id="text">{{post.content}}</p>
+                                    </div>
+                                </section>
+                            </div>
+                            {%endfor%}          
+                        {%else%}
+                            <div class="container">
+                                <section>
+                                    <div class="co6 shadow">
+                                        <img class="rounded-circle shadow" src="{{url_for('static', filename='pics/admin/admin.png')}}">
+                                        <p id="heder4">فريق اكشحها</p>
+                                        <hr>
+                                        <p id="text">مافي اي رسالة جديدة يا ادمن</p>
+                                    </div>
+                                </section>
+                            </div>
+                        {%endif%}
+                        
+                    </div>
+                </section>
+                <hr style="margin-top: 6rem;
+                display: block;
+                width: 80%;
+                border-radius: 5px;
+                background-color: #A52A2A;
+                border-top: 3px solid rgba(0, 0, 0, 0.1);">
+                <div class="container">
+                    <section>
+                        <div class="topMessage">
+                            <h4>Top 5</h4>
+                            {%if posts%}
+                                {%for post in posts%}
+                                    <section>
+                                        <div class="co6 shadow">
+                                            <img class="rounded-circle shadow" src="{{url_for('static', filename='/pics/all/')}}{{post.proFimage}}.png">
+                                            <p id="heder4">مجهول</p>
+                                            <span>{{post.date_created.strftime('%Y-%b-%a')}}</span>
+                                            <hr>
+                                            <p id="text">{{post.content}}</p>
+                                        </div>
+                                    </section>
+                                {%endfor%}         
+                            {%else%}
+                                <div class="container">
+                                    <section>
+                                        <div class="co6 shadow">
+                                            <img class="rounded-circle shadow" src="{{url_for('static', filename='pics/admin/admin.png')}}">
+                                            <p id="heder4">فريق اكشحها</p>
+                                            <hr>
+                                            <p id="text">الناس دي ما بدات تدرعها</p>
+                                        </div>
+                                    </section>
+                                </div>
+                            {%endif%}
+                        </div>
+                    </section>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

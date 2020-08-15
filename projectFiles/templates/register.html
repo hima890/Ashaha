@@ -1,0 +1,67 @@
+{%extends "layout.html"%}
+{%block title%}{{titel}}{%endblock%}
+{%block main%}
+<div class="container mt-4">
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if message %}
+            {% for category, message in message %}
+                <div class="alert alert-{{ category }}"  id="aleart">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{url_for('loginLogout.register')}}" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" id="flot">الاسم </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" required name="name">
+                    <span id="error1"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2" id="flot">اسم المستخدم</label>
+                    <input type="text" class="form-control" id="exampleInputEmail2" required name="userName">
+                    <span id="error2"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail3" id="flot">البريد الالكتروني</label>
+                    <input type="email" class="form-control" id="exampleInputEmail3" required name="email">
+                    <span id="error3">مافي زول بشوفه ما تلاوز</span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail4" id="flot">رقمك يا جميل</label>
+                    <input type="text" class="form-control" id="exampleInputEmail4" required name="phoneNumber" placeholder="0xxxxxxxx">
+                    <span id="error4">اكتب ساي، ما بنشاغل الشينين</span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail5" id="flot">كلمة السر</label>
+                    <input type="password" class="form-control" id="exampleInputEmail5" required name="password" autocomplete="new-password">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail6" id="flot">تأكيد كلمة السر</label>
+                    <input type="password" class="form-control" id="exampleInputEmail6" required autocomplete="new-password">
+                    <span id="error5"></span>
+                </div>
+                <div class="form-group">
+                    <select class="form-control mt-4" id="exampleInputEmail5" required name="gender">
+                        <option>زول</option>
+                        <option>زولة</option>
+                    </select>
+                </div>
+                <div class="form-group form-check" style="text-align: right;">
+                    <label class="form-check-label" for="exampleCheck1" id="label1">عمري اكبر من 16 سنة</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+                </div>
+                <div class="form-group form-check" style="text-align: right;">
+                    <label class="form-check-label" for="exampleCheck2" id="label2">اوافق علي كل الشروط</label>
+                    <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                  </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="b1" disabled>جوا الجك</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,0 +1,30 @@
+{%extends "layout.html"%}
+{%block title%}{{titel}}{%endblock%}
+{%block main%}
+<div class="container mt-4">
+    {% with message = get_flashed_messages(with_categories=true) %}
+        {% if message %}
+            {% for category, message in message %}
+                <div class="alert alert-{{ category }}" id="aleart">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{url_for('reset.reset_token', token=token)}}" method="POST">
+                <div class="co4 shadow">
+                    <div class="form-group">
+                        <label for="exampleInputEmail3" id="flot"  >كلمة السر الجديدة</label>
+                        <input type="password" class="form-control" id="exampleInputEmail3" required name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="b1">تغيير</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
